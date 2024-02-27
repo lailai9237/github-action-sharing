@@ -1,0 +1,31 @@
+name: Github Action sharing - Calculate
+
+on:
+  workflow_dispatch:
+    inputs:
+      operator:
+        description: "Operator"
+        required: true
+        type: choice
+        options:
+          - '+'
+          - '-'
+      left_number:
+        description: 'Left Number'
+        required: true
+        type: number
+        default: 0
+      right_number:
+        description: 'Right Number'
+        required: true
+        type: number
+        default: 0
+
+jobs:
+  Calculate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calculate 
+        run: echo "RESULT=$(echo ${{ inputs.left_number }} ${{ inputs.right_number }} | awk '{ print $1${{ inputs.operator }}$2 }')" >> $GITHUB_ENV
+      - name: Print
+        run: echo "${{ inputs.left_number }} ${{ inputs.operator }} ${{ inputs.right_number }} = ${{ env.RESULT }}"
