@@ -7,7 +7,7 @@ jobs:
   List:
     runs-on: ubuntn-lastest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: List
-        run: Ls -al
-      - name: pwd
-        run : pwd
+        run : ls -al
