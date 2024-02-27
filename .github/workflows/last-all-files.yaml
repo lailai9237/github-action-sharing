@@ -1,0 +1,13 @@
+name: Github Action sharing - Last All Files
+
+on:
+  push
+
+jobs:
+  List:
+    runs-on: ubuntn-lastest
+    steps:
+      - name: List
+        run: Ls -al
+      - name: pwd
+        run : pwd
